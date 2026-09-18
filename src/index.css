@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  /* Scripture Frames color palette*/
+
+  --color-parchment: #efe4d8;
+  --color-parchment-light: #f7f2ec;
+  --color-ink: #2e2420;
+  --color-forest: #5b6850;
+  --color-forest-light: #637157;
+  --color-brass: #8a3b2c;
+  --color-brass-light: #713024;
+  --color-brick: #b33a2e;
+  --color-card: #faf6f0;
+  --color-hairline: #505342;
+
+  /* Scripture Frames fonts*/
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-hairline);
+  }
+  body {
+    background-color: var(--color-parchment);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+
+  /* Visible keyboard focus everywhere */
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
