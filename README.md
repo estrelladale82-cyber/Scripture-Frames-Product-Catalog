@@ -25,10 +25,9 @@ build.
   and twenty-five Desk Frames, each with a title, description, price, and
   image.
 - **Add a Frame:** a form for adding new products, built with
-  [React Hook Form](https://react-hook-form.com/). Title, description, and
-  price are required, and price must be a positive number. The image URL
-  field is optional, falls back to a placeholder image if left blank, and
-  is validated to make sure it's a properly formed URL if provided.
+  [React Hook Form](https://react-hook-form.com/). Title, description,
+  price, and image URL are all required, price must be a positive number,
+  and the image URL is validated to make sure it's a properly formed URL.
 - **Delete a product:** every card has a delete button with a confirmation
   prompt before it removes the item.
 - **Search:** filters products live by title or description.

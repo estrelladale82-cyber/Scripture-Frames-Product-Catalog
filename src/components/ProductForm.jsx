@@ -24,7 +24,7 @@ const DEFAULT_VALUES = {
 export default function ProductForm({ onAddProduct }) {
   const [confirmation, setConfirmation] = useState("");
 
-  const isResettingRef = useRef(false)
+  const isResettingRef = useRef(false);
 
   const {
     register,
@@ -38,16 +38,16 @@ export default function ProductForm({ onAddProduct }) {
     mode: "onChange",
   });
 
- useEffect(() => {
-  const subscription = watch(() => {
-    if (isResettingRef.current) {
-      isResettingRef.current = false
-      return
-    }
-    setConfirmation("")
-  })
-  return () => subscription.unsubscribe()
-}, [watch])
+  useEffect(() => {
+    const subscription = watch(() => {
+      if (isResettingRef.current) {
+        isResettingRef.current = false;
+        return;
+      }
+      setConfirmation("");
+    });
+    return () => subscription.unsubscribe();
+  }, [watch]);
 
   const onSubmit = (data) => {
     onAddProduct({
@@ -55,16 +55,12 @@ export default function ProductForm({ onAddProduct }) {
       description: data.description.trim(),
       price: Number(data.price),
       category: data.category,
-      imageUrl:
-        data.imageUrl.trim() ||
-        `https://placehold.co/500x600/f5f0e6/3a2e26?text=${encodeURIComponent(
-          data.title.trim() || "Frame",
-        )}`,
+      imageUrl: data.imageUrl.trim(),
     });
 
-    setConfirmation(`"${data.title.trim()}" was added to the catalog.`)
-isResettingRef.current = true
-reset(DEFAULT_VALUES)
+    setConfirmation(`"${data.title.trim()}" was added to the catalog.`);
+    isResettingRef.current = true;
+    reset(DEFAULT_VALUES);
   };
 
   return (
@@ -165,15 +161,15 @@ reset(DEFAULT_VALUES)
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor="imageUrl">Image URL (optional)</Label>
+        <Label htmlFor="imageUrl">Image URL </Label>
         <Input
           id="imageUrl"
           placeholder="https://…"
           aria-invalid={Boolean(errors.imageUrl)}
           aria-describedby={errors.imageUrl ? "imageUrl-error" : undefined}
           {...register("imageUrl", {
+            required: "Image URL is required.",
             validate: (value) => {
-              if (!value) return true; // field is optional, so empty is fine
               try {
                 new URL(value);
                 return true;
