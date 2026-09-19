@@ -213,3 +213,4 @@ No environment variables are required, since there's no external API.
   (`public/images/`) so the catalog works fully offline.
 - Replace `window.confirm()` with a proper accessible modal for delete
   confirmation.
+
